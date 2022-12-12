@@ -1,0 +1,388 @@
+body {
+  margin: 0;
+  font-family: 'gill sans', 'Times New Roman', 'Times New Roman', Times, serif;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+}
+
+/* header */
+header {
+  width: 100%;
+  margin: 0;
+  display: flex;
+}
+
+.image {
+  background-image: url('../images/ionic.jpg');
+  width: 60%;
+  height: 300px;
+  background-size: cover;
+  background-position: 100% 30%;
+}
+
+nav {
+  width: 35%;
+  height: 300px;
+  justify-content: right;
+}
+
+nav a {
+  padding: 10px;
+  color: #553d36;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav button {
+  padding: 0 10px;
+  border: none;
+  background-color: white;
+  font-size: 20px;
+  color: #553d36;
+  font-family: 'gill sans', 'Times New Roman', 'Times New Roman', Times, serif;
+}
+
+nav button:hover {
+  cursor: pointer;
+}
+
+nav div {
+  display: inline;
+}
+
+h1 {
+  position: absolute;
+  margin: 0;
+  text-align: center;
+  top: 70px;
+  left: 40%;
+  font-size: 80px;
+  text-align: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #a4bef3, #87a0b2, #684a52, #553d36);
+}
+
+.subtitle {
+  left: 61%;
+  position: absolute;
+  top: 160px;
+  font-size: 30px;
+  color:#553d36
+}
+
+/* login & signup page */
+.login {
+  text-align: center
+}
+
+.login form {
+  text-align: left;
+  margin: 30px 80px;
+  padding: 30px;
+  background-color: #bfddff;
+}
+
+.login div {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  font-size: 23px;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.login label {
+  margin-bottom: 10px;
+}
+
+.login button {
+  width: 100px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 17px;
+  background-color: #553d36;
+  background-image: linear-gradient(0deg, #553d36, #684a52, #857885);
+  border: none;
+
+  color: #a4bef3;
+  font-size: 16px;
+}
+
+.dormant {
+  width: 100px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 17px;
+  background-image: linear-gradient(0deg, #1d1d1d, #5e5e5e, #857885);
+  border: none;
+
+  color: #a4bef3;
+  font-size: 16px;
+}
+
+.login button:hover {
+  cursor: pointer;
+}
+
+.login div div {
+  font-size: .8em;
+  width: 95%;
+  color: rgb(214, 42, 42);
+}
+
+/* add story page */
+.addStory{
+  margin: 20px;
+}
+
+/* home page */
+.story {
+  margin: 100px auto;
+  width: 85%;
+}
+
+.story img {
+  max-width: 100%;
+}
+
+.storyList {
+  margin: 50px auto;
+  width: 80%;
+  position: relative;
+}
+
+/* .storyList a:hover {
+  transition: all .5s ease-in-out;
+}  */
+
+/* story icon */
+.background {
+  background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,1));
+  width: 100%;
+  height: 700px;
+  z-index: 2;
+  position: relative;
+  transition: all .5s ease-in-out;
+  -webkit-transition: background-image .5s;
+  -moz-transition: background-image .5s;
+  -o-transition: background-image .5s;
+  transition: background-image .5s;
+}
+
+.foreground {
+  opacity: 0%;
+  background-image: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5),rgba(0,0,0,.75),rgba(0,0,0,1));
+  width: 100%;
+  height: 700px;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  transition: all .5s ease-in-out;
+}
+
+.storyListImage {
+  width: 100%;
+  z-index: 0;
+  height: 700px;
+  position: absolute;
+  top: 0;
+}
+
+.storyTitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  margin: 20px auto;
+  text-align: center;
+  text-decoration: none;
+  font-size: 100px;
+  color:#a4bef3;
+}
+
+.storySubtitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 20px auto;
+  text-align: center;
+  text-decoration: none;
+  font-size: 34px;
+  color:#a4bef3;
+}
+
+.link {
+  transition: all .5s ease-in-out;
+}
+
+.link:hover {
+  transform: scale(1.075);
+  transition: all .5s ease-in-out;
+}
+
+.storyLink:hover .foreground {
+  opacity: 100%;
+}
+
+/* story */
+.storyContent {
+  font-size: 25px;
+  margin: 30px;
+  color:#553d36;
+  line-height: 1.5;
+}
+
+.caption {
+  margin: 0px 30px;
+  font-size: 20px;
+}
+
+.storyHeader h2 {
+  font-size: 100px;
+  margin: 45px 0;
+}
+
+.storyHeader h3 {
+  font-size: 30px;
+}
+
+/* comment section */
+.addComment {
+  width: 90%;
+  margin: 10px auto;
+
+}
+
+.addComment textarea{
+  width: 85%;
+  border: solid #87a0b2 3px;
+  border-radius: 7px;
+  font-size: 20px;
+  font-family: 'gill sans', 'Times New Roman', 'Times New Roman', Times, serif;
+}
+
+.addComment button {
+
+  width: 100px;
+  margin: 10px auto;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 17px;
+  background-color: #553d36;
+  background-image: linear-gradient(0deg, #553d36, #684a52, #857885);
+  border: none;
+
+  color: #a4bef3;
+  font-size: 16px;
+}
+
+.addComment button:hover {
+  cursor: pointer;
+}
+
+.comment {
+  width: 85%;
+  border: solid #87a0b2 3px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin: 10px 0;
+  padding: 0 9px;
+
+}
+
+.comment h5 {
+  margin: 0 12px;
+  display: inline;
+  font-size: .9em;
+}
+
+.commentText {
+  margin: 10px 0;
+}
+
+.commentDate {
+  display: inline;
+  font-size: .8em;
+}
+
+/* dashboard */
+.dashboard {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.dashboard .comment {
+  margin: 10px auto;
+  padding-bottom: 15px;
+}
+
+.comment button  {
+  float: right;
+  width: 100px;
+  margin: 0 5px;
+  /* display: flex; */
+  justify-content: center;
+  padding: 5px;
+  border-radius: 17px;
+  background-color: #553d36;
+  background-image: linear-gradient(0deg, #553d36, #684a52, #857885);
+  border: none;
+  color: #a4bef3;
+  font-size: 16px;
+}
+
+.comment button:hover {
+  cursor: pointer;
+}
+
+.dashboard a {
+  text-decoration: none;
+  font-family: Verdana;
+  width: 100px;
+  margin: 0 30px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 17px;
+  background-color: #553d36;
+  background-image: linear-gradient(0deg, #553d36, #684a52, #857885);
+  border: none;
+  color: #a4bef3;
+  font-size: 16px;
+}
+
+.dashboard a:hover {
+  cursor: pointer;
+}
+
+.cancelation {
+  font-size: 1.2em;
+}
+.cancelation p {
+  margin: 20px auto;
+  width: 450px;
+}
+.cancelation button {
+  width: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 17px;
+  background-color: #553d36;
+  background-image: linear-gradient(0deg, #553d36, #684a52, #857885);
+  border: none;
+  color: #a4bef3;
+  font-size: 16px;
+}
+
+.cancelation button:hover {
+  cursor: pointer;
+}

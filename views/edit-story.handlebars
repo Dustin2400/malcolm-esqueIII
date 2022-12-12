@@ -1,0 +1,19 @@
+
+<div>
+  <form class="add-story">
+      <label for="title">Title</label>
+      <input name="title" type="text" id="title" value="{{story.title}}" />
+      <label for="subtitle">Subtitle</label>
+      <input type="subtitle" id="subtitle" name="subtitle" value="{{story.subtitle}}" />
+      <label for="name">Name</label>
+      <input type="name" id="name" name="name" value="{{story.name}}" />      
+      <button type="submit">Edit Story</button>
+  </form>
+</div>
+{{!-- </div> --}}
+<a href="/add-content/{{story.name}}">Add Content</a>
+{{!-- <div *ngIf="!isMe"> --}}
+  Psych!
+{{!-- </div> --}}
+<script src="/javascript/add-story.js"></script>
+</div>

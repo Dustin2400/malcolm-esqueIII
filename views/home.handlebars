@@ -1,0 +1,17 @@
+{{!-- <div *ngIf="isMe"> --}}
+  <a href="/add-story">Add Story</a>
+{{!-- </div> --}}
+<div class="storyList">
+  {{#each stories as |story|}}
+  <div class="link">
+    <a href="/story/{{story.name}}" class="storyLink">
+      <div class="background">
+        <h2 class="storyTitle">{{story.title}}</h2>
+        <h3 class="storySubtitle">{{story.subtitle}}</h3>
+      </div>
+      <div class="foreground"></div>
+      {{!-- <img src="{{story.contents[0].url}}" class="storyListImage" /> --}}
+    </a>
+  </div>
+  {{/each}}
+</div>

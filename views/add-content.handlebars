@@ -1,0 +1,17 @@
+<div>
+  <form class="add-content">
+    <span>story id: </span><p id="storyId" value="{{story.id}}">{{story.id}}</p>
+    <label for="type">Type</label>
+    <select name="type" id="type">
+      <option value=''>Pick one</option>
+      <option value='text' selected="selected">text</option>
+      <option value='image'>image</option>
+    </select>
+    <label for="text">Text</label>
+    <textarea name="text" cols="50" rows="7" id="text">{{content.text}}</textarea>
+    <label for="url">url</label>
+    <input name="url" type="text" id="url">
+    <button type="submit">Add Content</button>
+  </form>
+  <script src="/javascript/add-content.js"></script>
+</div>

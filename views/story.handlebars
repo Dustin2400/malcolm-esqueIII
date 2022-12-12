@@ -1,0 +1,33 @@
+{{!-- <div *ngIf="isMe"> --}}
+  <a href="/edit-story/{{story.name}}">Edit</a>
+{{!-- </div> --}}
+<div class="story">
+  <div class = 'storyHeader'>
+    {{!-- <img src="{{story.contents[0].url}}" /> --}}
+    <h2>{{story.title}}</h2>
+    <h3>{{story.subtitle}}</h3>
+    <p>{{story.createdAt}}</p>
+    <div *ngFor="let content of story.contents" class="storyContent">
+      <div *ngIf="content.type == 'image' && content._id != story.contents[0]._id">
+        <img src="{{content.url}}">
+        <p class="caption">{{content.text}}</p>
+      </div>
+      <div *ngIf="content.type == 'text'">
+        <p class="storyText">{{content.text}}</p>
+      </div>
+    </div>
+  </div>
+  <div class = "comments">
+    <h3>Comments</h3>
+    <form #commentForm = "ngForm" (ngSubmit)="addComment()" class = "addComment">
+      <textarea placeholder="What do you think?" name="newComment" [(ngModel)]="newComment">{{newComment}}</textarea><br>
+      <button type="submit">Comment</button>
+    </form>
+    <div *ngFor="let post of comments" class = "comment">
+      <p class="commentText">{{post.postText}}</p>
+      
+      <h5>-{{post.username}}</h5>
+      <p class="commentDate">{{post.createdAt}}</p>
+    </div>
+  </div>
+</div>
