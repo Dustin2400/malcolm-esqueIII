@@ -386,3 +386,8 @@ h1 {
 .cancelation button:hover {
   cursor: pointer;
 }
+
+/* malcolm only */
+table, th, td {
+  border: 1px solid black;
+}

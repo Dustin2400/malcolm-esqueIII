@@ -1,0 +1,16 @@
+<div>
+  <form class="edit-content" value="{{content.story_id}}">
+    <label for="type">Type</label>
+    <select name="type" id="type">
+      <option value=''>Pick one</option>
+      <option value='text'>text</option>
+      <option value='image'>image</option>
+    </select>
+    <label for="text">Text</label>
+    <textarea name="text" cols="50" rows="7" id="text">{{content.text}}</textarea>
+    <label for="url">url</label>
+    <input name="url" type="text" id="url" value="{{content.url}}">
+    <button type="submit">Edit Content</button>
+  </form>
+  <script src="/javascript/edit-content.js"></script>
+</div>

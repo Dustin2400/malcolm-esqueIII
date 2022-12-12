@@ -28,6 +28,19 @@ router.get('/:name', (req, res) => {
   })
 });
 
+router.get('/byId/:id', (req, res) => {
+  Story.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbStoryData => res.json(dbStoryData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+});
+
 router.post('/', (req, res) => {
   Story.create({
     title: req.body.title,

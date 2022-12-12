@@ -29,4 +29,4 @@ async function addContent(event) {
   }
 }
 
-document.querySelector('.add-content').addEventListener('submit', addContent)
+document.querySelector('.add-content').addEventListener('submit', addContent);

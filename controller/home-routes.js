@@ -1,4 +1,4 @@
-const { Story } = require('../models');
+const { Story, Content } = require('../models');
 
 const router = require('express').Router();
 
@@ -39,10 +39,17 @@ router.get('/edit-story/:name', (req, res) => {
   Story.findOne({
     where: {
       name: req.params.name
-    }
+    },
+    include: [
+      {
+        model: Content,
+        attributes: ['id', 'type', 'text', 'url']
+      }
+    ]
   })
   .then(dbStoryData => {
     const story = dbStoryData.get({ plain: true });
+    console.log(story);
     res.render('edit-story', {
       story
     })
@@ -59,10 +66,28 @@ router.get('/add-content/:name', (req, res) => {
       name: req.params.name
     }
   })
-  .then(dbStoryData =>{
+  .then(dbStoryData => {
     const story = dbStoryData.get({ plain: true });
     res.render('add-content', {
       story
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+});
+
+router.get('/edit-content/:id', (req, res) => {
+  Content.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbContentData => {
+    const content = dbContentData.get({ plain: true });
+    res.render('edit-content', {
+      content
     });
   })
   .catch(err => {
