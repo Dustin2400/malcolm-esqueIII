@@ -70,6 +70,19 @@ router.put('/', (req, res) => {
     console.log(err);
     res.status(500).json(err);
   })
+});
+
+router.delete('/:id', (req, res) => {
+  Story.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbStoryData => res.json(dbStoryData))
+  .catch (err => {
+    console.log(err);
+    res.status(500).json(err);
+  }) 
 })
 
 module.exports = router;

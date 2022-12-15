@@ -8,7 +8,8 @@ Content.belongsTo(Story, {
 });
 
 Story.hasMany(Content, {
-  foreignKey: 'story_id'
+  foreignKey: 'story_id',
+  onDelete: 'Cascade'
 });
 
 Post.belongsTo(Story, {
@@ -16,7 +17,8 @@ Post.belongsTo(Story, {
 });
 
 Story.hasMany(Post, {
-  foreignKey: 'story_id'
+  foreignKey: 'story_id',
+  onDelete: 'Cascade'
 });
 
 Post.belongsTo(User, {
@@ -24,7 +26,8 @@ Post.belongsTo(User, {
 });
 
 User.hasMany(Post, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onDelete: 'Cascade'
 });
 
 module.exports = { Story, Content, Post, User };

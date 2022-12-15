@@ -18,8 +18,7 @@ async function addStory(event) {
 
     if (response.ok) {
       const url = 'edit-story/' + name;
-      console.log(response);
-      // document.location.replace(url);
+      document.location.replace(url);
     } else {
       alert(response.statusText);
     }
