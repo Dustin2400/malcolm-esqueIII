@@ -7,15 +7,20 @@
     <h2>{{story.title}}</h2>
     <h3>{{story.subtitle}}</h3>
     <p>{{story.createdAt}}</p>
-    <div *ngFor="let content of story.contents" class="storyContent">
-      <div *ngIf="content.type == 'image' && content._id != story.contents[0]._id">
+    {{#each story.contents as |content|}}
+    <div>
+      {{#if content.url}}
+      <div>
         <img src="{{content.url}}">
         <p class="caption">{{content.text}}</p>
       </div>
-      <div *ngIf="content.type == 'text'">
+      {{else}}
+      <div>
         <p class="storyText">{{content.text}}</p>
       </div>
+      {{/if}}
     </div>
+    {{/each}}
   </div>
   <div class = "comments">
     <h3>Comments</h3>

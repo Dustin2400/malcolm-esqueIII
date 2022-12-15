@@ -1,6 +1,6 @@
 
 <div>
-  <form class="add-story">
+  <form class="edit-story" value="{{story.id}}">
       <label for="title">Title</label>
       <input name="title" type="text" id="title" value="{{story.title}}" />
       <label for="subtitle">Subtitle</label>
@@ -36,5 +36,5 @@
 {{!-- <div *ngIf="!isMe"> --}}
   Psych!
 {{!-- </div> --}}
-<script src="/javascript/add-story.js"></script>
+<script src="/javascript/edit-story.js"></script>
 </div>

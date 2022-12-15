@@ -54,4 +54,22 @@ router.post('/', (req, res) => {
   })
 });
 
+router.put('/', (req, res) => {
+  Story.update({
+    title: req.body.title,
+    subtitle: req.body.subtitle,
+    name: req.body.name
+  },
+  {
+    where: {
+      id: req.body.id
+    }
+  })
+  .then(dbStoryData => res.json(dbStoryData))
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
+})
+
 module.exports = router;
