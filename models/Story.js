@@ -23,6 +23,10 @@ Story.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW

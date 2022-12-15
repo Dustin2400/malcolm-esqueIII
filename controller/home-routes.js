@@ -23,13 +23,14 @@ router.get('/story/:name', (req, res) => {
   Story.findOne({
     where: {
       name: req.params.name
-    },
-    include: [
-      {
-        model: Content,
-        attributes: ['type', 'text', 'url']
-      }
-    ]
+    }
+    // },
+    // include: [
+    //   {
+    //     model: Content,
+    //     attributes: ['type', 'text', 'url']
+    //   }
+    // ]
   })
   .then(dbStoryData => {
     const story = dbStoryData.get({ plain: true });

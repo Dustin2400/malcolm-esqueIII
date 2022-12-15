@@ -45,7 +45,8 @@ router.post('/', (req, res) => {
   Story.create({
     title: req.body.title,
     subtitle: req.body.subtitle,
-    name: req.body.name
+    name: req.body.name,
+    image_url: req.body.image_url
   })
   .then(dbStoryData => res.json(dbStoryData))
   .catch(err => {
@@ -58,7 +59,8 @@ router.put('/', (req, res) => {
   Story.update({
     title: req.body.title,
     subtitle: req.body.subtitle,
-    name: req.body.name
+    name: req.body.name,
+    image_url: req.body.image_url
   },
   {
     where: {

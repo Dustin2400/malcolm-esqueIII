@@ -8,7 +8,7 @@
     <h3>{{story.subtitle}}</h3>
     <p>{{story.createdAt}}</p>
     {{#each story.contents as |content|}}
-    <div>
+    <div class="storyContent">
       {{#if content.url}}
       <div>
         <img src="{{content.url}}">
