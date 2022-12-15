@@ -3,14 +3,16 @@ const { Story, Content } = require('../models');
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  Story.findAll({
-    include: [
-      {
-        model: Content,
-        attributes: ['url']
-      }
-    ]
-  })
+  Story.findAll(
+    // {
+    //   include: [
+    //     {
+    //       model: Content,
+    //       attributes: ['url']
+    //     }
+    //   ]
+    // }
+  )
   .then(dbStoryData => {
     const stories = dbStoryData.map(story => story.get({ plain: true }));
     res.render('home', {
@@ -23,14 +25,13 @@ router.get('/story/:name', (req, res) => {
   Story.findOne({
     where: {
       name: req.params.name
-    }
-    // },
-    // include: [
-    //   {
-    //     model: Content,
-    //     attributes: ['type', 'text', 'url']
-    //   }
-    // ]
+    },
+    include: [
+      {
+        model: Content,
+        attributes: ['type', 'text', 'url']
+      }
+    ]
   })
   .then(dbStoryData => {
     const story = dbStoryData.get({ plain: true });
