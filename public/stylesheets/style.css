@@ -133,6 +133,9 @@ h1 {
 .login div div {
   font-size: .8em;
   width: 95%;
+}
+
+.error {
   color: rgb(214, 42, 42);
 }
 

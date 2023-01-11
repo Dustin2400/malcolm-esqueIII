@@ -1,0 +1,16 @@
+<main class="login">
+  <h3>Log In</h3>
+  <form >
+    <div *ngIf="failed" class="error">Invalid username or password</div>
+    <div>
+      <label for="username">Username</label>
+      <input name="username" type="text" id="username"/>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input name="password" type="password" id="password" />
+    </div>
+    <button type="submit">Log In</button>
+  </form>
+  <script src="/javascript/login.js"></script>
+</main>

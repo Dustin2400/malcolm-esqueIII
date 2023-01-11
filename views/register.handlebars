@@ -1,0 +1,41 @@
+<main class="login">
+  <h3>Sign Up</h3>
+  <form>
+    <div>
+      <label for="username">Username</label>
+      <input name="username" type="text" id="username"/>
+      {{#if username}}
+      <div class="error">This username is already taken. Please choose an origial username.</div>
+      {{/if}}
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email">
+      {{#if email}}
+      <div class="error">Enter a valid email.</div>
+      {{/if}}
+    </div>
+    <div>
+      <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        {{#if password}}
+        <div class="error">
+        {{else}}
+        <div>
+        {{/if}}
+            Password must contain:
+            <ul>
+              <li>at least 8 characters</li>
+              <li>one uppercase letter</li>
+              <li>one lowercase letter</li>
+              <li>one digit</li>
+              <li>one special character(●!#$%&()*+,-./:;=?@[\]^_`|~])</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+      <button type="submit">Sign Up</button>
+    </div>
+  </form>
+  <script src="/javascript/register.js"></script>
+</main>

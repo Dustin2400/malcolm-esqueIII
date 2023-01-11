@@ -13,14 +13,13 @@
         <section class="image"></section>
   <nav>
     <a href='/'>Home</a>
-    {{!-- <div *ngIf="!loggedIn"> --}}
+    {{#if loggedIn}}
+      <button id="logout">Log out</button>
+      <a href="/dashboard">Dashboard</a>
+    {{else}}
       <a href="/login">Log in</a>
       <a href="/register">Sign up</a>
-    {{!-- </div> --}}
-    {{!-- <div *ngIf="loggedIn">
-      <button (click)="logout()">Log out</button>
-      <a routerLink="/dashboard/{{userId}}">Dashboard</a>
-    </div> --}}
+    {{/if}}
   </nav>
   <h1>Malcolm-esque</h1>
   <p class='subtitle'>The Blog</p>
@@ -28,8 +27,8 @@
     <main>
         {{{ body }}}
     </main>
-    {{!-- {{#if loggedIn}}
+    {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
-    {{/if}} --}}
+    {{/if}}
 </body>
 </html>
