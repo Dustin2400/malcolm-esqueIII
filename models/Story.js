@@ -36,7 +36,7 @@ Story.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Story'
+    modelName: 'story'
   }
 );
 

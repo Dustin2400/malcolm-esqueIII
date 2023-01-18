@@ -6,4 +6,12 @@ const withAuth = (req, res, next) => {
     }
 };
 
-module.exports = withAuth;
+const isMalcolm = (req, res, next) => {
+    if(req.session.user_id == 10) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+} 
+
+module.exports = isMalcolm;

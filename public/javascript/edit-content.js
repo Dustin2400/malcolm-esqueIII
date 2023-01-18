@@ -9,7 +9,6 @@ async function editContent(event) {
   const url = document.querySelector('#url').value.trim();
 
   if ( type && text ) {
-    console.log('here');
     const storyUrl = '../api/stories/byId/' + story_id;
     const storyResponse = await fetch(storyUrl, {
       method: 'get',

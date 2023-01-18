@@ -1,6 +1,6 @@
-{{!-- <div *ngIf="isMe"> --}}
+{{#if isMalcolm}}
   <a href="/edit-story/{{story.name}}">Edit</a>
-{{!-- </div> --}}
+{{/if}}
 <div class="story">
   <div class = 'storyHeader'>
     {{!-- <img src="{{story.contents[0].url}}" /> --}}
@@ -24,15 +24,13 @@
   </div>
   <div class = "comments">
     <h3>Comments</h3>
-    <form #commentForm = "ngForm" (ngSubmit)="addComment()" class = "addComment">
-      <textarea placeholder="What do you think?" name="newComment" [(ngModel)]="newComment">{{newComment}}</textarea><br>
+    {{#if loggedIn}}
+    <form class = "addComment">
+      <textarea placeholder="What do you think?" id="newComment"></textarea><br>
       <button type="submit">Comment</button>
     </form>
-    <div *ngFor="let post of comments" class = "comment">
-      <p class="commentText">{{post.postText}}</p>
-      
-      <h5>-{{post.username}}</h5>
-      <p class="commentDate">{{post.createdAt}}</p>
-    </div>
+    {{/if}}
+    {{> comments story}}
   </div>
+  <script src="/javascript/add-comment.js"></script>
 </div>

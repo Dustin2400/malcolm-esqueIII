@@ -326,7 +326,7 @@ h1 {
   padding-bottom: 15px;
 }
 
-.comment button  {
+.comment a  {
   float: right;
   width: 100px;
   margin: 0 5px;
@@ -341,7 +341,7 @@ h1 {
   font-size: 16px;
 }
 
-.comment button:hover {
+.comment a:hover {
   cursor: pointer;
 }
 
@@ -365,14 +365,45 @@ h1 {
   cursor: pointer;
 }
 
-.cancelation {
+/* edit comment */
+.edit-comment {
+  width: 70%;
+  margin: 20px auto;
+}
+
+.edit-comment a, .edit-comment button {
+  float: left;
+  text-decoration: none;
+  font-family: Verdana;
+  width: 100px;
+  margin: 0 30px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 17px;
+  background-color: #553d36;
+  background-image: linear-gradient(0deg, #553d36, #684a52, #857885);
+  border: none;
+  color: #a4bef3;
+  font-size: 16px;
+}
+
+.edit-comment textarea {
+  border: solid #87a0b2 3px;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 0 9px;
+}
+
+/* cancellationc */
+.cancellation {
   font-size: 1.2em;
 }
-.cancelation p {
+.cancellation p {
   margin: 20px auto;
   width: 450px;
 }
-.cancelation button {
+.cancellation button {
   width: 100px;
   margin: 0 auto;
   display: flex;
@@ -386,7 +417,7 @@ h1 {
   font-size: 16px;
 }
 
-.cancelation button:hover {
+.cancellation button:hover {
   cursor: pointer;
 }
 

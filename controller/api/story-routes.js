@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Story, Content, Post } = require('../../models');
+const { Story, Content, Post, User } = require('../../models');
 
 router.get('/', (req, res) => {
   Story.findAll()
@@ -21,7 +21,9 @@ router.get('/:name', (req, res) => {
       }
     ]
   })
-  .then(dbStoryData => res.json(dbStoryData))
+  .then(dbStoryData => {
+    res.json(dbStoryData);
+  })
   .catch(err => {
     console.log(err);
     res.status(500).json(err);

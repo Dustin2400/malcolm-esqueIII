@@ -23,11 +23,11 @@ async function newUser(event) {
   }
 
   if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-    document.location.replace('/register-error/email')
+    document.location.replace('/register-error/email');
   }
 
   if (!password.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[●!#$%&()*+,\-./:;<=>?@[\\\]^_`{|}~]).{8,}/)) {
-    document.location.replace('/register-error/password')
+    document.location.replace('/register-error/password');
   }
 
 

@@ -1,0 +1,10 @@
+<div>
+  <form class="edit-comment" value="{{post.id}}">
+    <textarea name="text" cols="50" rows="7" id="text">{{post.post_text}}</textarea>
+    <div>
+      <button type="submit">Edit</button>
+      <a href="/delete-comment/{{post.id}}">Delete</a>
+    </div>
+  </form>
+  <script src="/javascript/edit-comment.js"></script>
+</div>

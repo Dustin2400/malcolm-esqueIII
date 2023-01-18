@@ -1,4 +1,5 @@
-const { Story, Content, User } = require('../models');
+const { Story, Content, User, Post } = require('../models');
+const isMalcolm = require('../utils/auth');
 
 const router = require('express').Router();
 
@@ -15,9 +16,13 @@ router.get('/', (req, res) => {
   )
   .then(dbStoryData => {
     const stories = dbStoryData.map(story => story.get({ plain: true }));
+    if (req.session.user_id == 10) {
+      var isMalcolm = true;
+    }
     res.render('home', {
       stories,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      isMalcolm
     });
   });
 });
@@ -31,15 +36,26 @@ router.get('/story/:name', (req, res) => {
       {
         model: Content,
         attributes: ['type', 'text', 'url']
+      },
+      {
+        model: Post,
+        attributes: ['id', 'post_text', 'createdAt'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
       }
     ]
   })
   .then(dbStoryData => {
     const story = dbStoryData.get({ plain: true });
-
+    if (req.session.user_id == 10) {
+      var isMalcolm = true;
+    }
     res.render('story', {
       story,
-      loggedIn: req.session.loggedIn
+      loggedIn: req.session.loggedIn,
+      isMalcolm
     });
   })
   .catch(err => {
@@ -48,11 +64,11 @@ router.get('/story/:name', (req, res) => {
   });
 });
 
-router.get('/add-story', (req, res) => {
+router.get('/add-story', isMalcolm, (req, res) => {
   res.render('add-story')
 });
 
-router.get('/edit-story/:name', (req, res) => {
+router.get('/edit-story/:name', isMalcolm, (req, res) => {
   Story.findOne({
     where: {
       name: req.params.name
@@ -78,7 +94,7 @@ router.get('/edit-story/:name', (req, res) => {
   })
 });
 
-router.get('/add-content/:name', (req, res) => {
+router.get('/add-content/:name', isMalcolm, (req, res) => {
   Story.findOne({
     where: {
       name: req.params.name
@@ -97,7 +113,7 @@ router.get('/add-content/:name', (req, res) => {
   })
 });
 
-router.get('/edit-content/:id', (req, res) => {
+router.get('/edit-content/:id', isMalcolm, (req, res) => {
   Content.findOne({
     where: {
       id: req.params.id
@@ -116,7 +132,7 @@ router.get('/edit-content/:id', (req, res) => {
   })
 });
 
-router.get('/delete-content/:id', (req, res) => {
+router.get('/delete-content/:id', isMalcolm, (req, res) => {
   Content.findOne({
     where: {
       id: req.params.id
@@ -185,18 +201,34 @@ router.get('/register-error/:error', (req, res) => {
     username,
     email,
     password
-  })
+  });
 });
 
 router.get('/login', (req, res) => {
   res.render('login')
 });
 
+router.get('/login/error', (req, res) => {
+  res.render('login', {
+    invalid: true
+  })
+});
+
 router.get('/dashboard', (req, res) => {
   User.findOne({
     where: {
       id: req.session.user_id
-    }
+    },
+    include: [
+      {
+        model: Post,
+        attributes: ['id', 'post_text', 'createdAt'],
+        include: {
+          model: Story,
+          attributes: ['title']
+        }
+      }
+    ]
   })
   .then(dbUserData => {
     if (!dbUserData) {
@@ -204,7 +236,7 @@ router.get('/dashboard', (req, res) => {
       return;
     }
 
-    const user = dbUserData.get({ plain: true }) ;
+    const user = dbUserData.get({ plain: true });
     res.render('dashboard', {
       user,
       loggedIn: req.session.loggedIn
@@ -213,7 +245,114 @@ router.get('/dashboard', (req, res) => {
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
+  });
+});
+
+router.get('/edit-comment/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    }
   })
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No comment found with that id'});
+      return;
+    }
+    const post = dbPostData.get({ plain: true });
+    res.render('edit-comment', {
+      post,
+      loggedIn: req.session.loggedIn
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+router.get('/delete-comment/:id', (req, res) => {
+  Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No comment found with that id'});
+      return;
+    }
+    
+    User.findOne({
+      where: {
+        id: req.session.user_id
+      },
+      include: [
+        {
+          model: Post,
+          attributes: ['id', 'post_text', 'createdAt'],
+          include: {
+            model: Story,
+            attributes: ['title']
+          }
+        }
+      ]
+    })
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user found with this id'});
+        return;
+      }
+  
+      const user = dbUserData.get({ plain: true });
+      res.render('dashboard', {
+        user,
+        loggedIn: req.session.loggedIn
+      })
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  });
+});
+
+router.get('/changePassword/:id', (req, res) => {
+  User.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbUserData => {
+    if (!dbUserData) {
+      res.status(404).json({ message: 'No user found with this id'});
+      return
+    }
+    const user = dbUserData.get({ plain: true });
+        res.render('change-password', {
+            user,
+            loggedIn: true
+        });
+  })
+});
+
+router.get('/change-password-error/:error/:id', (req, res) => {
+  var invalid = false;
+  var password = false;
+  if (req.params.error == 'invalid') {
+    invalid = true;
+  }
+  if (req.params.error == 'password') {
+    password = true;
+  }
+  res.render('change-password', {
+    invalid,
+    password
+  });
+})
+
+router.get('/cancellation', (req, res) => {
+  res.render('cancellation');
 });
 
 module.exports = router;

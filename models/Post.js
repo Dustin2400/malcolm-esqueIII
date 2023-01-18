@@ -11,13 +11,13 @@ Post.init(
             primaryKey: true,
             autoIncrement: true
         },
-        postText: {
+        post_text: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
         createdAt: {
-          type: DataTypes.DATE,
-          defaultValue: DataTypes.NOW
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -27,11 +27,11 @@ Post.init(
             }
         },
         story_id: {
-          type: DataTypes.INTEGER,
-          references: {
-            model: 'story',
-            key: 'id'
-          }
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'story',
+                key: 'id'
+            }
         }
     },
     {

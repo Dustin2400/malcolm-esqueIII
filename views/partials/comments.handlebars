@@ -1,0 +1,15 @@
+{{#each posts as |post|}}
+<div class="comment">
+  <p class="commentText">{{post.post_text}}</p>
+    {{#if post.user}}
+    <h5>-{{post.user.username}}</h5>
+    {{else}}
+    <h5>In story: {{post.story.title}}</h5>
+    {{/if}}
+  <p class="commentDate">{{format_date post.createdAt}}</p>
+  {{#if post.story}}
+  <a href="/edit-comment/{{id}}">Edit</a>
+  {{/if}}
+</div>
+
+{{/each}}

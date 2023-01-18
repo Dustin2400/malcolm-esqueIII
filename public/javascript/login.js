@@ -16,10 +16,9 @@ async function login(event) {
         });
 
         if(response.ok) {
-            // document.location.replace('/account');
-            console.log(response.json());
+            document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
+            document.location.replace('/login/error')
         }
     }
 }

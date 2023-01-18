@@ -1,7 +1,9 @@
 <main class="login">
   <h3>Log In</h3>
-  <form >
-    <div *ngIf="failed" class="error">Invalid username or password</div>
+  <form>
+    {{#if invalid}}
+    <div class="error">Invalid username or password</div>
+    {{/if}}
     <div>
       <label for="username">Username</label>
       <input name="username" type="text" id="username"/>
