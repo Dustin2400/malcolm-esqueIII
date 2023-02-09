@@ -3,6 +3,12 @@ body {
   font-family: 'gill sans', 'Times New Roman', 'Times New Roman', Times, serif;
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
+  height: 100vh;
+}
+
+main {
+  margin-bottom: 50px;
+  min-height: 80%;
 }
 
 /* header */
@@ -27,10 +33,11 @@ nav {
 }
 
 nav a {
-  padding: 10px;
+  padding: 0 10px;
   color: #553d36;
   text-decoration: none;
   font-size: 20px;
+  text-align: center;
 }
 
 nav button {
@@ -146,18 +153,23 @@ h1 {
 
 /* home page */
 .story {
-  margin: 100px auto;
+  margin: 50px auto;
   width: 85%;
 }
 
 .story img {
-  max-width: 100%;
+  max-width: 101%;
 }
 
 .storyList {
   margin: 50px auto;
   width: 80%;
   position: relative;
+}
+
+.story-date {
+  text-align: right;
+  width: 90%;
 }
 
 /* .storyList a:hover {
@@ -308,6 +320,7 @@ h1 {
 
 .commentText {
   margin: 10px 0;
+  word-wrap: break-word;
 }
 
 .commentDate {
@@ -395,7 +408,7 @@ h1 {
   padding: 0 9px;
 }
 
-/* cancellationc */
+/* cancellation */
 .cancellation {
   font-size: 1.2em;
 }
@@ -424,4 +437,288 @@ h1 {
 /* malcolm only */
 table, th, td {
   border: 1px solid black;
+}
+
+/* footer */
+footer {
+  background-image: linear-gradient(240deg, #a4bef3, #87a0b2, #684a52, #553d36);
+  width: 100%;
+  font-size: 17px;
+  color: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+footer img {
+  opacity: 50%;
+  height: 50px;
+  margin: 15px;
+}
+
+footer img:hover {
+  opacity: 100%;
+}
+
+@media screen and (max-width: 980px) {
+  h1 {
+    font-size: 60px;
+  }
+
+  .image, nav {
+    height: 200px;
+  } 
+
+  .subtitle {
+    margin: 0;
+    font-size: 23px;
+  }
+
+  .background {
+    height: 400px;
+  }
+
+  .foreground {
+    height: 400px;
+  }
+
+  .storyListImage {
+    height: 400px;
+  }
+
+  .storyTitle {
+    font-size: 60px;
+    bottom: 50px;
+  }
+
+  .storySubtitle {
+    font-size: 25px;
+  }
+
+  .storyHeader h2 {
+    font-size: 75px;
+  }
+
+  .story {
+    width: 90%;
+  }
+
+  .storyText {
+    font-size: 20px;
+  }
+
+  .caption {
+    font-size: 17px;
+  }
+
+  .comment {
+    width: 97%;
+  }
+
+  .commentText {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  header {
+    flex-wrap: wrap;
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  h1 {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .subtitle {
+    position: relative;
+    top: 0;
+    left: 0;
+
+  }
+  nav {
+    width: 100%;
+    display: flex;
+    height: 25px;
+  }
+
+  .main-title {
+    padding: 0 15px;
+  }
+
+  .storyHeader h2 {
+    font-size: 50px;
+  }
+
+  .login {
+    margin: 15px;
+  }
+
+  .login form {
+    margin: 0;
+    padding: 10px;
+  }
+
+  .login div {
+    margin: 0;
+    width: 80%;
+  }
+
+  .login ul {
+    font-size: 15px;
+    padding: 0 0 0 15px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .background {
+    height: 300px;
+  }
+
+  .foreground {
+    height: 300px;
+  }
+
+  .storyListImage {
+    height: 300px;
+  }
+
+  .storyTitle {
+    font-size: 40px;
+  }
+
+  .storySubtitle {
+    font-size: 20px;
+  }
+
+  .storyList {
+    margin: 25px auto;
+    width: 90%;
+  }
+
+  footer img {
+    height: 30px;
+  }
+
+  footer p {
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+.image {
+  height: 125px;
+}
+
+  h1 {
+    font-size: 35px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  nav a, nav button {
+    font-size: 15px;
+    height: 15px;
+  }
+
+  .background {
+    height: 200px;
+  }
+
+  .foreground {
+    height: 200px;
+  }
+
+  .storyListImage {
+    height: 200px;
+  }
+
+  .storyTitle {
+    font-size: 30px;
+    bottom: 30px;
+  }
+
+  .storySubtitle {
+    font-size: 15px;
+  }
+
+  /* .story {
+    margin: 0px auto;
+  } */
+
+  .storyHeader h2 {
+    font-size: 35px;
+    margin: 15px;
+  }
+
+  .storyHeader h3 {
+    font-size: 20px;
+    margin: 10px;
+  }
+
+  .story {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .storyContent {
+    margin: 0;
+  }
+
+  .storyText {
+    font-size: 17px;
+    margin: 15px;
+  }
+
+  .caption {
+    font-size: 12px;
+  }
+
+  .comments {
+    margin: 15px;
+  }
+
+  .comment {
+    width: 90%;
+  }
+
+  .commentText {
+    font-size: 13px;
+  }
+
+  .comment h5 {
+    font-size: 13px;
+  }
+
+  .commentDate {
+    font-size: 13px;
+  }
+
+  .comment a {
+    float: none;
+    margin: 10px;
+  }
+
+  .edit-comment {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .edit-comment textarea {
+    max-width: 90%;
+  }
+
+  .edit-comment a, .edit-comment button {
+    width: 100px;
+    margin: 5px;
+  }
 }

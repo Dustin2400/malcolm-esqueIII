@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/ionic-column.png">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Malcolm-esque</title>
 </head>
@@ -11,6 +12,10 @@
 <body>
     <header>
         <section class="image"></section>
+        <div class="main-title">
+          <h1>Malcolm-esque</h1>
+          <p class='subtitle'>The Blog</p>
+        </div>
   <nav>
     <a href='/'>Home</a>
     {{#if loggedIn}}
@@ -21,12 +26,19 @@
       <a href="/register">Sign up</a>
     {{/if}}
   </nav>
-  <h1>Malcolm-esque</h1>
-  <p class='subtitle'>The Blog</p>
+
     </header>
     <main>
         {{{ body }}}
     </main>
+    <footer>
+      <p>Made with ❤️ by Dustin Grijalva</p>
+      <div>
+        <a href="https://patreon.com/user?u=87703539" alt="Support">
+          <img src="../images/patreon.png" />
+        </a>
+      </div>
+    </footer>
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}

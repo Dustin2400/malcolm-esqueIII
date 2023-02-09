@@ -6,7 +6,6 @@
     {{!-- <img src="{{story.contents[0].url}}" /> --}}
     <h2>{{story.title}}</h2>
     <h3>{{story.subtitle}}</h3>
-    <p>{{story.createdAt}}</p>
     {{#each story.contents as |content|}}
     <div class="storyContent">
       {{#if content.url}}
@@ -22,11 +21,12 @@
     </div>
     {{/each}}
   </div>
+  <p class="story-date">{{format_date story.createdAt}}</p>
   <div class = "comments">
     <h3>Comments</h3>
     {{#if loggedIn}}
     <form class = "addComment">
-      <textarea placeholder="What do you think?" id="newComment"></textarea><br>
+      <textarea placeholder="What do you think?" id="newComment" maxlength="500"></textarea><br>
       <button type="submit">Comment</button>
     </form>
     {{/if}}

@@ -4,16 +4,7 @@ const isMalcolm = require('../utils/auth');
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  Story.findAll(
-    // {
-    //   include: [
-    //     {
-    //       model: Content,
-    //       attributes: ['url']
-    //     }
-    //   ]
-    // }
-  )
+  Story.findAll()
   .then(dbStoryData => {
     const stories = dbStoryData.map(story => story.get({ plain: true }));
     if (req.session.user_id == 10) {
@@ -24,6 +15,10 @@ router.get('/', (req, res) => {
       loggedIn: req.session.loggedIn,
       isMalcolm
     });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
@@ -82,7 +77,6 @@ router.get('/edit-story/:name', isMalcolm, (req, res) => {
   })
   .then(dbStoryData => {
     const story = dbStoryData.get({ plain: true });
-    console.log(story);
     res.render('edit-story', {
       story,
       loggedIn: req.session.loggedIn
@@ -235,7 +229,6 @@ router.get('/dashboard', (req, res) => {
       res.status(404).json({ message: 'No user found with this id'});
       return;
     }
-
     const user = dbUserData.get({ plain: true });
     res.render('dashboard', {
       user,
@@ -303,7 +296,6 @@ router.get('/delete-comment/:id', (req, res) => {
         res.status(404).json({ message: 'No user found with this id'});
         return;
       }
-  
       const user = dbUserData.get({ plain: true });
       res.render('dashboard', {
         user,
@@ -339,15 +331,20 @@ router.get('/changePassword/:id', (req, res) => {
 router.get('/change-password-error/:error/:id', (req, res) => {
   var invalid = false;
   var password = false;
+  var mismatch = false;
   if (req.params.error == 'invalid') {
     invalid = true;
   }
   if (req.params.error == 'password') {
     password = true;
   }
+  if (req.params.error == 'mismatch') {
+    mismatch = true;
+  }
   res.render('change-password', {
     invalid,
-    password
+    password,
+    mismatch
   });
 })
 

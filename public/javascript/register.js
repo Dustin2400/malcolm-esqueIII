@@ -14,7 +14,6 @@ async function newUser(event) {
     return data
   })
   .catch(err => console.log(err));
-  console.log(users);
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].username == username) {

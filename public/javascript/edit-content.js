@@ -17,7 +17,6 @@ async function editContent(event) {
 
     const storyObj = await storyResponse.json();
     const story_name = storyObj.name;
-    console.log(story_name);
 
     const url2 = '../api/content/' + id;
     const response = await fetch(url2, {

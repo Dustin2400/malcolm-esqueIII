@@ -4,6 +4,7 @@ async function changePassword(event) {
   const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
   const currentPassword = document.querySelector('#currentPassword').value.trim();
   const newPassword = document.querySelector('#newPassword').value.trim();
+  const confirmPassword = document.querySelector('#confirmPassword').value.trim();
 
   const url = '/api/users/checkPassword/' + id;
   const validation = await fetch(url, {
@@ -19,14 +20,18 @@ async function changePassword(event) {
   })
 
   if (!validation.valid){
-    console.log('NO');
-    const url2 = '/change-password-error/invalid/' + id
+    const url2 = '/change-password-error/invalid/' + id;
     document.location.replace(url2);
   }
 
   if (!newPassword.match(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[●!#$%&()*+,\-./:;<=>?@[\\\]^_`{|}~]).{8,}/)) {
-    const url3 = '/change-password-error/password/' + id
+    const url3 = '/change-password-error/password/' + id;
     document.location.replace(url3);
+  }
+
+  if(newPassword != confirmPassword){
+    const url4 = '/change-password-error/mismatch/' + id;
+    document.location.replace(url4);
   }
 
   const response = await fetch ('/api/users/change-password', {
