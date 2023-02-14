@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   })
   .then(dbStoryData => {
     const stories = dbStoryData.map(story => story.get({ plain: true }));
-    if (req.session.user_id == 10) {
+    if (req.session.user_id == 1) {
       var isMalcolm = true;
     }
     res.render('home', {
@@ -48,7 +48,7 @@ router.get('/story/:name', (req, res) => {
   })
   .then(dbStoryData => {
     const story = dbStoryData.get({ plain: true });
-    if (req.session.user_id == 10) {
+    if (req.session.user_id == 1) {
       var isMalcolm = true;
     }
     res.render('story', {
