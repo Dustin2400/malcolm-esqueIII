@@ -164,7 +164,6 @@ h1 {
 .storyList {
   margin: 50px auto;
   width: 80%;
-  position: relative;
 }
 
 .story-date {
@@ -235,11 +234,16 @@ h1 {
 
 .link {
   transition: all .5s ease-in-out;
+  margin: 40px 0;
 }
 
 .link:hover {
   transform: scale(1.075);
   transition: all .5s ease-in-out;
+}
+
+.storyLink {
+  position: relative;
 }
 
 .storyLink:hover .foreground {

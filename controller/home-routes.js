@@ -4,10 +4,14 @@ const isMalcolm = require('../utils/auth');
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  Story.findAll()
+  Story.findAll({
+    order: [
+      ['id', 'DESC']
+    ]
+  })
   .then(dbStoryData => {
     const stories = dbStoryData.map(story => story.get({ plain: true }));
-    if (req.session.user_id == 10) {
+    if (req.session.user_id == 1) {
       var isMalcolm = true;
     }
     res.render('home', {

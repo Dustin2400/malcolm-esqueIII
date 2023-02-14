@@ -8,7 +8,7 @@ async function addContent(event) {
   const text = document.querySelector('#text').value.trim();
   const url = document.querySelector('#url').value.trim();
 
-  if( type && text ) {
+  if( type ) {
     const response = await fetch('../api/content', {
       method: 'post',
       body: JSON.stringify({

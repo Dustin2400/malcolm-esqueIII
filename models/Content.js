@@ -17,7 +17,7 @@ Content.init(
         },
         text: {
           type: DataTypes.TEXT,
-          allowNull: false
+          allowNull: true
         },
         url: {
           type: DataTypes.STRING,
