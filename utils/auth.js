@@ -7,7 +7,7 @@ const withAuth = (req, res, next) => {
 };
 
 const isMalcolm = (req, res, next) => {
-    if(req.session.user_id == 1) {
+    if(req.session.user_id == 10) {
         next();
     } else {
         res.redirect('/');

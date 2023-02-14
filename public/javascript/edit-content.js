@@ -8,7 +8,7 @@ async function editContent(event) {
   const text = document.querySelector('#text').value.trim();
   const url = document.querySelector('#url').value.trim();
 
-  if ( type && text ) {
+  if ( type ) {
     const storyUrl = '../api/stories/byId/' + story_id;
     const storyResponse = await fetch(storyUrl, {
       method: 'get',
