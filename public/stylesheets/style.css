@@ -200,7 +200,7 @@ h1 {
   transition: all .5s ease-in-out;
 }
 
-.storyListImage {
+.storyLink img {
   width: 100%;
   z-index: 0;
   height: 700px;
