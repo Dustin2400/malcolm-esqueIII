@@ -43,12 +43,12 @@ router.post('/login', (req, res) => {
       }
 
       const validPassword = dbUserData.checkPassword(req.body.password);
+      console.log(validPassword);
       if(!validPassword) {
           res.status(400).json({ message: 'Wrong password!' });
           return;
       }
 
-      
       req.session.save(() => {
           req.session.user_id = dbUserData.id;
           req.session.username = dbUserData.username;

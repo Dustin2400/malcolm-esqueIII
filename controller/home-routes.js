@@ -213,6 +213,7 @@ router.get('/login/error', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
+  console.log(req.session.user_id);
   User.findOne({
     where: {
       id: req.session.user_id
